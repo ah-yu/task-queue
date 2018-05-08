@@ -1,5 +1,9 @@
-import { EventEmitter } from 'eventemitter3';
-
+/*
+ * @Author: buji 
+ * @Date: 2018-05-08 12:49:41 
+ * @Last Modified by: buji
+ * @Last Modified time: 2018-05-08 12:51:23
+ */
 const DEFAULT_CONCURRENCE = 1;
 
 export interface options {
@@ -21,12 +25,8 @@ export default class TaksQueue {
         this.finishCb = param.finishCb || (() => {});
     }
 
-    enqueue(tasks: Function[] | Function) {
-        if (Array.isArray(tasks)) {
-            this.tasks.push(...tasks);
-        } else {
-            this.tasks.push(tasks);
-        }
+    enqueue(task: Function) {
+        this.tasks.push(task);
     }
 
     start() {
