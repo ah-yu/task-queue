@@ -1,0 +1,16 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "target": "es2017",
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "outDir": "./dist",
+        "sourceMap": true
+    },
+    "exclude": ["node_modules"],
+    "include": ["src/**/*"]
+}
