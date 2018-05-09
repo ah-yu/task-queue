@@ -11,13 +11,8 @@ export interface options {
     finishCb?: Function;
 }
 
-interface TaskItem {
-    task: Function;
-    cb?: Function;
-}
-
 export default class TaksQueue {
-    private tasks: TaskItem[];
+    private tasks: Function[];
     private concurrence: number;
 
     private isRuning: boolean;
@@ -30,11 +25,9 @@ export default class TaksQueue {
         this.finishCb = param.finishCb || (() => {});
     }
 
+    //allow func and async func
     enqueue(task: Function, cb?: Function) {
-        this.tasks.push({
-            task: task,
-            cb: cb ? cb : () => {}
-        });
+        this.tasks.push(task);
     }
 
     start() {
@@ -62,14 +55,8 @@ export default class TaksQueue {
                 this.tasks.length
             );
 
-            const promisefy = function(item: TaskItem) {
-                return Promise.resolve()
-                    .then(() => {
-                        return item.task();
-                    })
-                    .then((value: any) => {
-                        return item.cb(value);
-                    });
+            const promisefy = function(func: Function) {
+                return Promise.resolve(func);
             };
 
             const promises = [];
