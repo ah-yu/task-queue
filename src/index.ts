@@ -2,7 +2,7 @@
  * @Author: buji 
  * @Date: 2018-05-08 12:49:41 
  * @Last Modified by: buji
- * @Last Modified time: 2018-05-08 12:51:23
+ * @Last Modified time: 2018-05-08 14:00:03
  */
 const DEFAULT_CONCURRENCE = 1;
 
@@ -55,7 +55,9 @@ export default class TaksQueue {
             );
 
             const promisefy = function(func: Function) {
-                func();
+                Promise.resolve().then(() => {
+                    func();
+                });
             };
 
             const promises = [];
