@@ -2,7 +2,7 @@
  * @Author: buji 
  * @Date: 2018-05-08 12:49:41 
  * @Last Modified by: buji
- * @Last Modified time: 2018-05-08 14:00:03
+ * @Last Modified time: 2018-05-10 11:41:50
  */
 const DEFAULT_CONCURRENCE = 1;
 
@@ -26,7 +26,7 @@ export default class TaksQueue {
     }
 
     //allow func and async func
-    enqueue(task: Function, cb?: Function) {
+    enqueue(task: Function) {
         this.tasks.push(task);
     }
 
@@ -47,9 +47,13 @@ export default class TaksQueue {
         this.isRuning = false;
     }
 
+    clear() {
+        this.tasks = [];
+        this.isRuning = false;
+    }
+
     private async excute() {
         if (this.isRuning && this.tasks.length > 0) {
-            const task = this.tasks.shift();
             const realConcurrence = Math.max(
                 this.concurrence,
                 this.tasks.length
