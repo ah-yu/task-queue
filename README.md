@@ -18,7 +18,7 @@ $ npm install @buji/task-queue --save
 const TQ = require('@buji/task-queue');
 
 const tq = new TQ({ concurrency: 1, finishCb: finish_callback });
-tq.enqueue(some_function);
+tq.enqueue(some_function); //push your task in the queue
 tq.start();
 tq.stop();
 ```
