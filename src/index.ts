@@ -56,7 +56,9 @@ export default class TaksQueue {
             );
 
             const promisefy = function(func: Function) {
-                return Promise.resolve(func);
+                return Promise.resolve().then(() => {
+                    func();
+                });
             };
 
             const promises = [];
