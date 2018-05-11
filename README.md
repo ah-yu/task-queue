@@ -19,6 +19,7 @@ const TQ = require('@buji/task-queue');
 
 const tq = new TQ({ concurrency: 1, finishCb: finish_callback });
 tq.enqueue(some_function); //push your task in the queue
+tq.exqueue(some_async_function);
 tq.start();
 tq.stop();
 ```
