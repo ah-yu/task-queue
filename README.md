@@ -1,5 +1,7 @@
 # task-queue
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ah-yu/task-queue.svg)](https://greenkeeper.io/)
+
 a light weight task queue
 
 ## Introduce
